@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Introduction - ToDo</title>
 </head>
+
 <body>
     <h1>Welcome to ToDo</h1>
     <p>
@@ -15,6 +17,13 @@
         <li><a href="/say-hello">Hello API string response</a></li>
         <li><a href="/say-hello-html">Hello API with html response </a></li>
         <li><a href="/say-hello-jsp">Hello API with jsp response</a></li>
+        <li>Login API with request param
+            <form action="/login" method="get">
+                <input type="text" id="name" name="name" placeholder="Username" value="demo">
+                <input type="submit" value="Submit">
+            </form>
+        </li>
     </ul>
 </body>
+
 </html>
