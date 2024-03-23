@@ -1,22 +1,33 @@
 package com.lari.todo.login;
 
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import ch.qos.logback.classic.Logger;
 
 @Controller
 public class LoginController {
 
-    private Logger logger = (Logger) LoggerFactory.getLogger(LoginController.class);
-    
-    @RequestMapping("/login")
-    public String login(@RequestParam String name, ModelMap model) {
-        model.put("name", name);
-        logger.debug("The request parameter is: {}", name);
+    private AuthenticationService authenticationService;
+
+    LoginController(AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
+    }
+
+    @RequestMapping(path = "/login", method = RequestMethod.GET)
+    public String login() {
         return "login";
+    }
+
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    public String loginPost(@RequestParam String username, @RequestParam String password,
+            ModelMap model) {
+        if (!authenticationService.authenticate(username, password)) {
+            model.put("errorMessage", "Invalid Credentials. Please try again!");
+            return "login";
+        }
+        model.put("username", username);
+        return "welcome";
     }
 }

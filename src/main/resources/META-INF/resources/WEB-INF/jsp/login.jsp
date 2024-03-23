@@ -7,10 +7,10 @@
 </head>
 <body>
     <h1>Login</h1>
-    <h2>Welcome ${name}</h2>
-    <form action="/login" method="post">
+    <form method="post">
+        <h4>${errorMessage}</h4>
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" value="${name}">
+        <input type="text" id="username" name="username" autocomplete="off"">
         <br>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
