@@ -21,11 +21,19 @@ public class TodoController {
         this.todoService = todoService;
     }
 
-    @RequestMapping(path = "/list-todos", method = RequestMethod.GET)
-    public String listAllTodos(ModelMap model) {
-        List<Todo> todos = todoService.findByUsername("in28minutes");
-        model.put("todos", todos);
-        return "list-todos";
+    @GetMapping("/users/{username}/todos")
+    public List<Todo> retrieveTodos(@PathVariable String username) {
+        return todoService.findByUsername(username);
     }
 
+    @GetMapping("/users/{username}/todos/{id}")
+    public Todo retrieveTodo(@PathVariable String username, @PathVariable Long id) {
+        return todoService.findById(id);
+    }
+
+    @DeleteMapping("/users/{username}/todos/{id}")
+    public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable Long id) {
+        todoService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }
