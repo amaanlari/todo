@@ -1,11 +1,10 @@
 package com.lari.todo.controllers;
 
 import java.util.List;
-import org.springframework.stereotype.Controller;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import com.lari.todo.models.Todo;
 import com.lari.todo.services.TodoService;
 
@@ -14,7 +13,7 @@ import com.lari.todo.services.TodoService;
 @CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 public class TodoController {
 
-    TodoService todoService;
+    private TodoService todoService;
 
     public TodoController(TodoService todoService) {
         super();
