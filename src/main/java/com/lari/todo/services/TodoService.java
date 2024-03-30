@@ -14,7 +14,7 @@ import com.lari.todo.models.Todo;
 public class TodoService {
     private static List<Todo> todos = new ArrayList<>();
 
-    private static long todosCount = 0;
+    private static long todosCount = 3;
 
     static {
         todos.add(new Todo(1L, "in28minutes", "Learn Spring Boot", LocalDate.now(), false));

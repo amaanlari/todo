@@ -1,19 +1,18 @@
 package com.lari.todo.controllers;
 
-import java.util.List;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
 import com.lari.todo.models.Todo;
 import com.lari.todo.services.TodoService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 public class TodoController {
 
-    private TodoService todoService;
+    private final TodoService todoService;
 
     public TodoController(TodoService todoService) {
         super();
@@ -34,5 +33,18 @@ public class TodoController {
     public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable Long id) {
         todoService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/users/{username}/todos/{id}")
+    public Todo updateTodo(@RequestBody Todo todo) {
+        todoService.updateTodo(todo);
+        return todo;
+    }
+
+    @PostMapping("/users/{username}/todos")
+    public Todo createTodo(@PathVariable String username, @RequestBody Todo todo) {
+        todo.setUsername(username);
+        todo = todoService.addTodo(username, todo.getDescription(), todo.getTargetDate(), todo.isDone());
+        return todo;
     }
 }
