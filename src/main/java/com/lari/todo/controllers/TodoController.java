@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RestController
+//@RestController
 @CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 public class TodoController {
 
@@ -43,8 +43,8 @@ public class TodoController {
 
     @PostMapping("/users/{username}/todos")
     public Todo createTodo(@PathVariable String username, @RequestBody Todo todo) {
-        todo.setUsername(username);
-        todo = todoService.addTodo(username, todo.getDescription(), todo.getTargetDate(), todo.isDone());
+
+        todo = todoService.addTodo(username, todo.getDescription(), todo.getTargetDate());
         return todo;
     }
 }

@@ -1,8 +1,20 @@
 package com.lari.todo.models;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
 public class Todo {
+
+    @Id
+    @GeneratedValue(generator = "TODO_SEQUENCE_GENERATOR", strategy = GenerationType.AUTO)
+    @SequenceGenerator(
+        name = "TODO_SEQUENCE_GENERATOR",
+        sequenceName = "TODO_SEQUENCE",
+        initialValue = 4,
+        allocationSize = 1
+    )
     private Long id;
     private String username;
     private String description;
