@@ -15,10 +15,15 @@ public class Todo {
         initialValue = 4,
         allocationSize = 1
     )
+    @Column(name = "id")
     private Long id;
+    @Column(name = "username")
     private String username;
+    @Column(name = "description")
     private String description;
+    @Column(name = "target_date")
     private LocalDate targetDate;
+    @Column(name = "done")
     private boolean done;
 
     public Todo() {

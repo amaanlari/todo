@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(
+    origins = {"http://localhost:5173", "https://eclectic-nougat-d8c886.netlify.app/"},
+    allowCredentials = "true")
 public class HelloWorldController {
 
     @GetMapping(path = "/hello-world")

@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:5173", "https://eclectic-nougat-d8c886.netlify.app/"},
+    allowCredentials = "true")
+
 public class TodoJpaController {
 
   private final TodoService todoService;
