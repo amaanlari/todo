@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(
-    origins = {"http://localhost:5173", "https://eclectic-nougat-d8c886.netlify.app/"},
+    origins = {"http://localhost:5173", "https://lari-task-manager.netlify.app/"},
     allowCredentials = "true")
 public class HelloWorldController {
 
